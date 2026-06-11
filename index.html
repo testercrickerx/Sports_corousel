@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@that_sportaddict — FIFA World Cup 2026 Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --parchment: #D4B483;
+    --parchment-light: #DEC190;
+    --parchment-dark: #C4A070;
+    --espresso: #1A0F05;
+    --espresso-mid: #2B1A08;
+    --caramel: #8B6914;
+    --red-accent: #C0392B;
+    --divider: #8B6914;
+  }
+
+  body {
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 40px;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .slide-label {
+    color: #888;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: 'Barlow', sans-serif;
+    align-self: flex-start;
+    margin-left: calc(50% - 202px);
+  }
+
+  /* BASE SLIDE */
+  .slide {
+    width: 405px;
+    height: 506px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    /* Parchment paper texture via layered gradients */
+    background-color: var(--parchment);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E"),
+      linear-gradient(160deg, #DFC48A 0%, #C9A96E 40%, #D4B483 70%, #C0A060 100%);
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 14px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .eyebrow {
+    font-family: 'Barlow', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--espresso-mid);
+  }
+
+  .issue-code {
+    font-family: 'Barlow', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--espresso-mid);
+  }
+
+  /* BOTTOM BAR */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px 20px 12px;
+    border-top: 1px solid var(--divider);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .handle {
+    font-family: 'Barlow', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--espresso-mid);
+  }
+
+  .slide-num {
+    font-family: 'Barlow', sans-serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--caramel);
+  }
+
+  /* VERTICAL DIVIDER */
+  .v-divider {
+    position: absolute;
+    top: 42px;
+    bottom: 36px;
+    left: 50%;
+    width: 1px;
+    background: var(--divider);
+    opacity: 0.6;
+  }
+
+  /* ===================== SLIDE 1 — COVER ===================== */
+  .s1-content {
+    position: absolute;
+    top: 42px; left: 0; right: 0; bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 24px;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .s1-tournament {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--caramel);
+  }
+
+  .s1-matchup {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--espresso);
+    line-height: 1;
+  }
+
+  .s1-vs {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--caramel);
+  }
+
+  .s1-divider-h {
+    width: 60%;
+    height: 1px;
+    background: var(--divider);
+    opacity: 0.5;
+    margin: 8px auto;
+  }
+
+  .s1-score {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 110px;
+    font-weight: 900;
+    color: var(--espresso);
+    line-height: 0.85;
+    letter-spacing: -4px;
+  }
+
+  .s1-score span {
+    color: var(--red-accent);
+  }
+
+  .s1-meta {
+    font-family: 'Barlow', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-top: 8px;
+  }
+
+  /* ===================== SLIDE 2 — TIMELINE ===================== */
+  .s2-inner {
+    position: absolute;
+    top: 42px; left: 0; right: 0; bottom: 36px;
+    padding: 16px 0 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .s2-title {
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--espresso);
+    padding: 0 20px 10px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .s2-timeline {
+    flex: 1;
+    display: flex;
+    position: relative;
+    padding: 12px 0;
+  }
+
+  .s2-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 14px;
+  }
+
+  .s2-col.right {
+    border-left: 1px solid var(--divider);
+  }
+
+  .s2-event {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .s2-min {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--espresso);
+    line-height: 1;
+  }
+
+  .s2-min span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .s2-player {
+    font-family: 'Barlow', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--espresso-mid);
+  }
+
+  .s2-type {
+    font-family: 'Barlow', sans-serif;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--caramel);
+  }
+
+  .s2-type.goal { color: var(--espresso); font-weight: 700; }
+  .s2-type.card { color: var(--red-accent); font-weight: 700; }
+
+  .s2-pullquote {
+    margin: 0 16px;
+    padding: 10px 14px;
+    border-left: 3px solid var(--espresso);
+    background: rgba(26,15,5,0.06);
+  }
+
+  .s2-pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--espresso);
+    line-height: 1.5;
+  }
+
+  /* ===================== SLIDE 3 — PLAYER SPOTLIGHT ===================== */
+  .s3-inner {
+    position: absolute;
+    top: 42px; left: 0; right: 0; bottom: 36px;
+    display: flex;
+  }
+
+  .s3-left {
+    width: 50%;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .s3-right {
+    width: 50%;
+    border-left: 1px solid var(--divider);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 14px 10px;
+    gap: 10px;
+  }
+
+  .s3-eyebrow-small {
+    font-family: 'Barlow', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--caramel);
+  }
+
+  .s3-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--espresso);
+    line-height: 0.95;
+    letter-spacing: 1px;
+  }
+
+  .s3-img-box {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #C4A060 0%, #9A7840 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--divider);
+    max-height: 200px;
+  }
+
+  .s3-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .s3-img-placeholder {
+    font-family: 'Barlow', sans-serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(26,15,5,0.4);
+    text-align: center;
+    padding: 10px;
+  }
+
+  .s3-img-caption {
+    font-family: 'Barlow', sans-serif;
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--caramel);
+  }
+
+  .s3-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .s3-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(139,105,20,0.3);
+    padding-bottom: 6px;
+  }
+
+  .s3-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--espresso);
+    line-height: 1;
+  }
+
+  .s3-stat-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 7.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--caramel);
+  }
+
+  .s3-desc {
+    font-family: 'Playfair Display', serif;
+    font-size: 8.5px;
+    font-style: italic;
+    color: var(--espresso-mid);
+    line-height: 1.6;
+  }
+
+  /* ===================== SLIDE 4 — STATS ===================== */
+  .s4-inner {
+    position: absolute;
+    top: 42px; left: 0; right: 0; bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 20px 10px;
+    gap: 10px;
+  }
+
+  .s4-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--espresso);
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .s4-headers {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .s4-team {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--espresso);
+  }
+
+  .s4-team.right { text-align: right; }
+
+  .s4-stat-label-center {
+    font-family: 'Barlow', sans-serif;
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--caramel);
+    text-align: center;
+  }
+
+  .s4-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(139,105,20,0.25);
+  }
+
+  .s4-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--espresso);
+    line-height: 1;
+  }
+
+  .s4-num.right { text-align: right; }
+
+  .s4-cat {
+    font-family: 'Barlow', sans-serif;
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--caramel);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* ===================== SLIDE 5 — FUN FACT ===================== */
+  .s5-inner {
+    position: absolute;
+    top: 42px; left: 0; right: 0; bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 28px;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .s5-big-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 160px;
+    font-weight: 900;
+    color: var(--espresso);
+    line-height: 0.8;
+    letter-spacing: -6px;
+    opacity: 0.12;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .s5-num-display {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 90px;
+    font-weight: 900;
+    color: var(--espresso);
+    line-height: 0.85;
+    letter-spacing: -3px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .s5-underline {
+    width: 60px;
+    height: 3px;
+    background: var(--caramel);
+    position: relative;
+    z-index: 1;
+  }
+
+  .s5-fact {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--espresso);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+  }
+
+  .s5-source {
+    font-family: 'Barlow', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--caramel);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===================== SLIDE 6 — NEXT MATCH ===================== */
+  .s6-inner {
+    position: absolute;
+    top: 42px; left: 0; right: 0; bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 24px;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .s6-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--caramel);
+  }
+
+  .s6-round {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--espresso-mid);
+    border: 1px solid var(--divider);
+    padding: 4px 14px;
+    margin: 4px 0;
+  }
+
+  .s6-team1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--espresso);
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+
+  .s6-vs {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--caramel);
+  }
+
+  .s6-team2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--espresso);
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+
+  .s6-divider {
+    width: 50%;
+    height: 1px;
+    background: var(--divider);
+    opacity: 0.5;
+    margin: 8px 0;
+  }
+
+  .s6-date {
+    font-family: 'Barlow', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--espresso-mid);
+  }
+
+  .s6-venue {
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--caramel);
+  }
+
+  .s6-cta {
+    font-family: 'Barlow', sans-serif;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--espresso);
+    border-top: 1px solid var(--divider);
+    padding-top: 10px;
+    margin-top: 6px;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .nav button {
+    background: #333;
+    border: none;
+    color: #ccc;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .nav button:hover { background: #555; }
+  .nav button.active { background: #C4956A; color: #1a0f05; }
+
+  .slide-wrapper {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slide-wrapper.active { display: flex; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="active" onclick="showSlide(0)">01</button>
+  <button onclick="showSlide(1)">02</button>
+  <button onclick="showSlide(2)">03</button>
+  <button onclick="showSlide(3)">04</button>
+  <button onclick="showSlide(4)">05</button>
+  <button onclick="showSlide(5)">06</button>
+</div>
+
+<!-- ========== SLIDE 1 — COVER ========== -->
+<div class="slide-wrapper active" id="sw0">
+  <div class="slide-label">Slide 01 — Match Recap Cover</div>
+  <div class="slide">
+    <div class="top-bar">
+      <span class="eyebrow">Match Recap</span>
+      <span class="issue-code">S1E1 01</span>
+    </div>
+    <div class="s1-content">
+      <div class="s1-tournament">FIFA World Cup 2026</div>
+      <div class="s1-matchup">Brazil</div>
+      <div class="s1-vs">— vs —</div>
+      <div class="s1-matchup">France</div>
+      <div class="s1-divider-h"></div>
+      <div class="s1-score">3<span>-</span>1</div>
+      <div class="s1-meta">Quarter Final &nbsp;·&nbsp; 28 June 2026 &nbsp;·&nbsp; MetLife Stadium</div>
+    </div>
+    <div class="bottom-bar">
+      <span class="handle">@that_sportaddict</span>
+      <span class="slide-num">1 / 6</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 2 — TIMELINE ========== -->
+<div class="slide-wrapper" id="sw1">
+  <div class="slide-label">Slide 02 — Key Moments Timeline</div>
+  <div class="slide">
+    <div class="top-bar">
+      <span class="eyebrow">Timeline</span>
+      <span class="issue-code">S1E1 02</span>
+    </div>
+    <div class="s2-inner">
+      <div class="s2-title">Key Moments</div>
+      <div class="s2-timeline">
+        <div class="s2-col left">
+          <div class="s2-event">
+            <div class="s2-min">23<span>'</span></div>
+            <div class="s2-player">Vinicius Jr</div>
+            <div class="s2-type goal">⚽ Goal</div>
+          </div>
+          <div class="s2-event">
+            <div class="s2-min">55<span>'</span></div>
+            <div class="s2-player">Upamecano</div>
+            <div class="s2-type card">🟥 Red Card</div>
+          </div>
+          <div class="s2-event">
+            <div class="s2-min">88<span>'</span></div>
+            <div class="s2-player">Neymar Jr</div>
+            <div class="s2-type goal">⚽ Goal</div>
+          </div>
+        </div>
+        <div class="s2-col right">
+          <div class="s2-event">
+            <div class="s2-min">41<span>'</span></div>
+            <div class="s2-player">Mbappé</div>
+            <div class="s2-type goal">⚽ Goal</div>
+          </div>
+          <div class="s2-event">
+            <div class="s2-min">67<span>'</span></div>
+            <div class="s2-player">Rodrygo</div>
+            <div class="s2-type goal">⚽ Goal</div>
+          </div>
+        </div>
+      </div>
+      <div class="s2-pullquote">
+        <p>"The red card at 55' was the moment that changed everything — Brazil never looked back."</p>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span class="handle">@that_sportaddict</span>
+      <span class="slide-num">2 / 6</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 3 — PLAYER SPOTLIGHT ========== -->
+<div class="slide-wrapper" id="sw2">
+  <div class="slide-label">Slide 03 — Player Spotlight</div>
+  <div class="slide">
+    <div class="top-bar">
+      <span class="eyebrow">Player Spotlight</span>
+      <span class="issue-code">S1E1 03</span>
+    </div>
+    <div class="s3-inner">
+      <div class="s3-left">
+        <div>
+          <div class="s3-eyebrow-small">Man of the Match</div>
+          <div class="s3-name">Vini<br>cius<br>Jr</div>
+        </div>
+        <div class="s3-stats">
+          <div class="s3-stat-row">
+            <div>
+              <div class="s3-stat-label">Goals</div>
+              <div class="s3-stat-num">1</div>
+            </div>
+            <div style="text-align:right">
+              <div class="s3-stat-label">Assists</div>
+              <div class="s3-stat-num">2</div>
+            </div>
+          </div>
+          <div class="s3-stat-row">
+            <div>
+              <div class="s3-stat-label">Recoveries</div>
+              <div class="s3-stat-num">8</div>
+            </div>
+            <div style="text-align:right">
+              <div class="s3-stat-label">Dribbles</div>
+              <div class="s3-stat-num">6</div>
+            </div>
+          </div>
+          <div class="s3-desc">Unstoppable on the left flank. Terrorised the French defence from first whistle.</div>
+        </div>
+      </div>
+      <div class="s3-right">
+        <div class="s3-img-box">
+          <div class="s3-img-placeholder">Player<br>Image<br>Here</div>
+        </div>
+        <div class="s3-img-caption">@that_sportaddict</div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span class="handle">@that_sportaddict</span>
+      <span class="slide-num">3 / 6</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 4 — STATS ========== -
